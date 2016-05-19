@@ -1,0 +1,1215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectName>libfunambol</ProjectName>
+    <ProjectGuid>{D279EE74-36FB-4C4C-8F29-04947825C53E}</ProjectGuid>
+    <RootNamespace>win32</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.CPP.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.40219.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\output\win32-dbg\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\output\win32-dbg-object\</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\output\win32-rel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\output\win32-rel-object\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\src\include\common;..\..\src\include\windows\pthread;..\..\src\include\windows\sqlite;..\..\src\include\windows;..\..\tools\zlib;..\..\tools\cjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_MBCS;UNICODE;_LIB;NO_CRIT_MSGBOX;_CRT_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;ENABLE_UNIT_TESTS;ENABLE_NAMESPACE;USE_ZLIB;NOMINMAX;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <PrecompiledHeaderOutputFile>.\output\win32-dbg-object/win32.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\output\win32-dbg-object/</AssemblerListingLocation>
+      <ObjectFileName>.\output\win32-dbg-object/</ObjectFileName>
+      <ProgramDataBaseFileName>.\output\win32-dbg-object/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4521;4800;4244;4805</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0410</Culture>
+    </ResourceCompile>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
+    <Lib>
+      <AdditionalDependencies>Shlwapi.lib;ws2_32.lib;pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../tools/winpthread;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\output\win32-dbg/win32.bsc</OutputFile>
+    </Bscmake>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <AdditionalIncludeDirectories>..\..\src\include\common;..\..\src\include\windows\pthread;..\..\src\include\windows\sqlite;..\..\src\include\windows;..\..\tools\zlib;..\..\tools\cjson;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;UNICODE;_LIB;_CRT_SECURE_NO_DEPRECATE;_CRT_NON_CONFORMING_SWPRINTFS;USE_ZLIB;ENABLE_NAMESPACE;NOMINMAX;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StringPooling>true</StringPooling>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <PrecompiledHeaderOutputFile>.\output\win32-rel-object/win32.pch</PrecompiledHeaderOutputFile>
+      <AssemblerListingLocation>.\output\win32-rel-object/</AssemblerListingLocation>
+      <ObjectFileName>.\output\win32-rel-object/</ObjectFileName>
+      <ProgramDataBaseFileName>.\output\win32-rel-object/</ProgramDataBaseFileName>
+      <WarningLevel>Level3</WarningLevel>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4521;4800;4244;4805</DisableSpecificWarnings>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <Culture>0x0410</Culture>
+    </ResourceCompile>
+    <Lib>
+      <AdditionalDependencies>Shlwapi.lib;ws2_32.lib;pthreadVC2.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>../../tools/winpthread;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+    </Lib>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\output\win32-rel/win32.bsc</OutputFile>
+    </Bscmake>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\cpp\common\base\base64.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\base\error.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\base\oauth2\Oauth2JsonParser.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MediaRequestManagerFactory.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHFileSyncSource.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHLabelInfo.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHLabelsStore.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\OAuth2MediaRequestManager.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\RadiusProxyMediaRequestManager.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\SapiMediaRequestManager.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\WassupMediaRequestManager.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\sapi\SapiConfig.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\sapi\SapiPayment.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\sapi\SapiSubscription.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\base\Log.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\md5.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\base\MemTracker.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\quoted-printable.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\base\winadapter.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\util\ArrayElement.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\base\util\ArrayList.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\base\util\baseutils.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\base\util\BasicTime.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\util\EncodingHelper.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\util\MemoryKeyValueStore.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\util\PropertyFile.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\util\StringBuffer.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\base\util\StringMap.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\base\stringUtils.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\base\timeUtils.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\util\WString.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\base\util\XMLProcessor.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\windows\base\adapter\PlatformAdapter.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\http\BasicAuthentication.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\http\DigestAuthentication.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\http\HttpConnection.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\http\HTTPHeader.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\http\HttpUploader.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\http\Proxy.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\http\TransportAgent.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\windows\http\HttpConnectionTimer.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\http\TransportAgentFactory.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\http\URL.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\windows\http\WinDigestAuthHashProvider.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\http\WinTransportAgent.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\CacheSyncSource.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\ConfigSyncSource.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\DMTClientConfig.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\client\FileLogAccessor.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\FileSyncItem.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\FileSyncSource.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\MailSourceManagementNode.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\OptionParser.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\PostDataLogSender.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\SendLogManager.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\SQLKeyValueStore.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\SyncClient.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\client\TestFileSyncSource.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\spdm\DeviceManagementNode.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spdm\DMtree.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\windows\spdm\DMTreeFactory.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spdm\ManagementNode.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\AccessConfig.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\B64Decoder.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\B64Encoder.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\BodyPart.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\Chunk.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\CredentialHandler.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\CustomConfig.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\DataTransformer.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\DataTransformerFactory.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\DefaultConfigFactory.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\spds\DESDecoder.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\spds\DESEncoder.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\DeviceConfig.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\FileData.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\FolderData.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\FolderExt.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\ItemReader.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\ItemReport.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\spdsutils.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncItem.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncItemKeys.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncItemStatus.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncManager.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncManagerConfig.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncMap.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncMLBuilder.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncMLProcessor.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncReport.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncSource.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncSourceConfig.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\spds\SyncSourceReport.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\AbstractCommand.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Add.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Alert.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Anchor.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Atomic.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Authentication.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Chal.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\CmdID.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\ComplexData.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\ContentTypeInfo.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\ContentTypeParameter.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Copy.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Cred.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\CTCap.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\CTPropParam.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\CTTypeSupported.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Data.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\DataStore.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Delete.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\DevInf.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\DevInfData.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\DevInfItem.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\DSMem.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\EMI.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Exec.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Ext.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Filter.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Get.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Item.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\ItemizedCommand.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Map.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\MapItem.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Mem.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Meta.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\MetInf.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\ModificationCommand.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\NextNonce.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\ObjectDel.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Property.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\PropParam.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Put.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Replace.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\ResponseCommand.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Results.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Search.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Sequence.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SessionID.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Source.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SourceArray.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SourceRef.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Status.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\StringElement.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Sync.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SyncAlert.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SyncBody.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SyncCap.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SyncHdr.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SyncML.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SyncNotification.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SyncType.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\SyncTypeArray.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\Target.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\TargetRef.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\VerDTD.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\core\VerProto.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\parser\Parser.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\syncml\formatter\Formatter.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\filter\AllClause.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\filter\Clause.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\filter\ClauseUtil.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\filter\FieldClause.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\filter\LogicalClause.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\filter\SourceFilter.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\filter\WhereClause.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\vocl\VConverter.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\vocl\VObject.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\vocl\VObjectFactory.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\vocl\VProperty.cpp">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\windows\vocl\sifUtils.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinContact.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinContactSIF.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinEvent.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinEventSIF.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinItem.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinNote.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinNoteSIF.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinRecipient.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinRecurrence.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinRecurrenceSIF.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinTask.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\vocl\WinTaskSIF.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\BaseEvent.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\FireEvent.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\ItemStatusEvent.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\ItemStatusListener.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\ManageListener.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\SetListener.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\SyncEvent.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\SyncItemEvent.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\SyncItemListener.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\SyncSourceEvent.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\SyncStatusEvent.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\event\TransportEvent.cpp" />
+    <ClCompile Include="..\..\tools\zlib\adler32.c" />
+    <ClCompile Include="..\..\tools\zlib\compress.c" />
+    <ClCompile Include="..\..\tools\zlib\crc32.c" />
+    <ClCompile Include="..\..\tools\zlib\deflate.c" />
+    <ClCompile Include="..\..\tools\zlib\gzio.c" />
+    <ClCompile Include="..\..\tools\zlib\infblock.c" />
+    <ClCompile Include="..\..\tools\zlib\infcodes.c" />
+    <ClCompile Include="..\..\tools\zlib\inffast.c" />
+    <ClCompile Include="..\..\tools\zlib\inflate.c" />
+    <ClCompile Include="..\..\tools\zlib\inftrees.c" />
+    <ClCompile Include="..\..\tools\zlib\infutil.c" />
+    <ClCompile Include="..\..\tools\zlib\trees.c" />
+    <ClCompile Include="..\..\tools\zlib\uncompr.c" />
+    <ClCompile Include="..\..\tools\zlib\zutil.c" />
+    <ClCompile Include="..\..\src\cpp\common\push\CTPConfig.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\push\CTPMessage.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\push\CTPParam.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\push\CTPService.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\push\CTPThreadPool.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\push\FSocket.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\push\FThread.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mail\MailAccount.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mail\MailAccountManager.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mail\MailData.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mail\MailMessage.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\mail\MailSyncSourceConfig.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.obj</ObjectFileName>
+      <XMLDocumentationFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(IntDir)%(Filename)1.xdc</XMLDocumentationFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cpp\common\ioStream\BufferInputStream.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\ioStream\BufferOutputStream.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\ioStream\FileDataInputStream.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\ioStream\FileInputStream.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\ioStream\FileOutputStream.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\ioStream\InputStream.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\ioStream\MultipleInputStream.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\updater\Updater.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\updater\UpdaterConfig.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\sapi\FileSapiSyncSource.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\sapi\MediaSapiSyncSource.cpp" />
+    <ClCompile Include="..\..\tools\cjson\cJSON.c" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\CommandReport.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\CommandReportStore.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\ExernalServicesAlbumStore.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\ExernalServicesStore.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\ExportedItem.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\ExternalService.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\ExternalServiceAlbum.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHConfig.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHItemJsonParser.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHItemsStore.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHMediaJsonParser.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHMediaRequestManager.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHServiceProfiling.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHStore.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHSyncItemInfo.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHSyncManager.cpp" />
+    <ClCompile Include="..\..\src\cpp\common\mediaHub\MHSyncSource.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\sqlite\Database.cpp" />
+    <ClCompile Include="..\..\src\cpp\windows\sqlite\shell.c" />
+    <ClCompile Include="..\..\src\cpp\windows\sqlite\sqlite3.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\include\common\base\base64.h" />
+    <ClInclude Include="..\..\src\include\common\base\constants.h" />
+    <ClInclude Include="..\..\src\include\common\base\debug.h" />
+    <ClInclude Include="..\..\src\include\common\base\errors.h" />
+    <ClInclude Include="..\..\src\include\common\base\fscapi.h" />
+    <ClInclude Include="..\..\src\include\common\base\Log.h" />
+    <ClInclude Include="..\..\src\include\common\base\md5.h" />
+    <ClInclude Include="..\..\src\include\common\base\oauth2\OAuth2Credentials.h" />
+    <ClInclude Include="..\..\src\include\common\base\oauth2\Oauth2JsonParser.h" />
+    <ClInclude Include="..\..\src\include\common\base\oauth2\OAuth2LoginInfo.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MediaRequestManagerFactory.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHLabelInfo.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHLabelsStore.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\OAuth2MediaRequestManager.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\RadiusProxyMediaRequestManager.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\SapiMediaRequestManager.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\WassupMediaRequestManager.h" />
+    <ClInclude Include="..\..\src\include\windows\base\MemTracker.h" />
+    <ClInclude Include="..\..\src\include\common\base\messages.h" />
+    <ClInclude Include="..\..\src\include\common\base\quoted-printable.h" />
+    <ClInclude Include="..\..\src\include\windows\base\startcmd.h" />
+    <ClInclude Include="..\..\src\include\windows\base\winadapter.h" />
+    <ClInclude Include="..\..\src\include\windows\base\winlog.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\ArrayElement.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\ArrayList.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\ArrayListEnumeration.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\BasicTime.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\EncodingHelper.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\Enumeration.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\ItemContainer.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\KeyValuePair.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\KeyValueStore.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\MemoryKeyValueStore.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\PropertyFile.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\StringBuffer.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\StringMap.h" />
+    <ClInclude Include="..\..\src\include\windows\base\stringUtils.h" />
+    <ClInclude Include="..\..\src\include\windows\base\timeutils.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\utils.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\WKeyValuePair.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\WString.h" />
+    <ClInclude Include="..\..\src\include\common\base\util\XMLProcessor.h" />
+    <ClInclude Include="..\..\src\include\common\base\adapter\PlatformAdapter.h" />
+    <ClInclude Include="..\..\src\include\common\client\CacheSyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\client\ConfigSyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\client\DMTClientConfig.h" />
+    <ClInclude Include="..\..\src\include\common\client\FileClient.h" />
+    <ClInclude Include="..\..\src\include\common\client\FileLogAccessor.h" />
+    <ClInclude Include="..\..\src\include\common\client\FileSyncItem.h" />
+    <ClInclude Include="..\..\src\include\common\client\FileSyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\client\LogAccessor.h" />
+    <ClInclude Include="..\..\src\include\common\client\LogSender.h" />
+    <ClInclude Include="..\..\src\include\common\client\MailSourceManagementNode.h" />
+    <ClInclude Include="..\..\src\include\common\client\ODBCKeyValueStore.h" />
+    <ClInclude Include="..\..\src\include\common\client\OptionParser.h" />
+    <ClInclude Include="..\..\src\include\common\client\PostDataLogSender.h" />
+    <ClInclude Include="..\..\src\include\common\client\SendLogManager.h" />
+    <ClInclude Include="..\..\src\include\common\client\SQLiteKeyValueStore.h" />
+    <ClInclude Include="..\..\src\include\common\client\SQLKeyValueStore.h" />
+    <ClInclude Include="..\..\src\include\common\client\SyncClient.h" />
+    <ClInclude Include="..\..\src\include\common\client\TestFileSyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\event\BaseEvent.h" />
+    <ClInclude Include="..\..\src\include\common\event\constants.h" />
+    <ClInclude Include="..\..\src\include\common\event\FireEvent.h" />
+    <ClInclude Include="..\..\src\include\common\event\Listener.h" />
+    <ClInclude Include="..\..\src\include\common\event\ManageListener.h" />
+    <ClInclude Include="..\..\src\include\common\event\SetListener.h" />
+    <ClInclude Include="..\..\src\include\common\event\SyncEvent.h" />
+    <ClInclude Include="..\..\src\include\common\event\SyncItemEvent.h" />
+    <ClInclude Include="..\..\src\include\common\event\SyncItemListener.h" />
+    <ClInclude Include="..\..\src\include\common\event\SyncListener.h" />
+    <ClInclude Include="..\..\src\include\common\event\SyncSourceEvent.h" />
+    <ClInclude Include="..\..\src\include\common\event\SyncSourceListener.h" />
+    <ClInclude Include="..\..\src\include\common\event\SyncStatusEvent.h" />
+    <ClInclude Include="..\..\src\include\common\event\SyncStatusListener.h" />
+    <ClInclude Include="..\..\src\include\common\event\TransportEvent.h" />
+    <ClInclude Include="..\..\src\include\common\event\TransportListener.h" />
+    <ClInclude Include="..\..\src\include\common\filter\AllClause.h" />
+    <ClInclude Include="..\..\src\include\common\filter\Clause.h" />
+    <ClInclude Include="..\..\src\include\common\filter\ClauseUtil.h" />
+    <ClInclude Include="..\..\src\include\common\filter\FieldClause.h" />
+    <ClInclude Include="..\..\src\include\common\filter\LogicalClause.h" />
+    <ClInclude Include="..\..\src\include\common\filter\SourceFilter.h" />
+    <ClInclude Include="..\..\src\include\common\filter\WhereClause.h" />
+    <ClInclude Include="..\..\src\include\common\http\constants.h" />
+    <ClInclude Include="..\..\src\include\common\http\errors.h" />
+    <ClInclude Include="..\..\src\include\windows\http\HttpConnection.h" />
+    <ClInclude Include="..\..\src\include\common\http\HTTPHeader.h" />
+    <ClInclude Include="..\..\src\include\common\http\Proxy.h" />
+    <ClInclude Include="..\..\src\include\common\http\TransportAgent.h" />
+    <ClInclude Include="..\..\src\include\common\http\TransportAgentFactory.h" />
+    <ClInclude Include="..\..\src\include\common\http\URL.h" />
+    <ClInclude Include="..\..\src\include\windows\http\HttpConnectionTimer.h" />
+    <ClInclude Include="..\..\src\include\windows\http\windigestauthhashprovider.h" />
+    <ClInclude Include="..\..\src\include\windows\http\wintransportagent.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\formatter\Formatter.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\parser\Parser.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\AbstractCommand.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Add.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Alert.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\AlertCode.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Anchor.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Atomic.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Authentication.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Chal.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\CmdID.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\ComplexData.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Constants.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\ContentTypeInfo.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\ContentTypeParameter.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Copy.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\core.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Cred.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\CTCap.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\CTPropParam.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\CTTypeSupported.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Data.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\DataStore.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Delete.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\DevInf.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\DevInfData.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\DevInfItem.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\DevTyp.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\DSMem.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\EMI.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Exec.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Ext.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Filter.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Get.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Item.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\ItemizedCommand.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Map.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\MapItem.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Mark.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Mem.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Meta.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\MetInf.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\ModificationCommand.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\NextNonce.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\ObjectDel.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Property.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\PropParam.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Put.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Replace.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\ResponseCommand.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Results.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Search.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Sequence.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SessionID.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Source.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SourceArray.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SourceRef.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Status.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\StringElement.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Sync.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SyncAlert.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SyncBody.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SyncCap.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SyncHdr.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SyncML.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SyncNotification.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SyncType.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\SyncTypeArray.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\TagNames.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\Target.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\TargetRef.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\VerDTD.h" />
+    <ClInclude Include="..\..\src\include\common\syncml\core\VerProto.h" />
+    <ClInclude Include="..\..\src\include\common\vocl\VConverter.h" />
+    <ClInclude Include="..\..\src\include\common\vocl\VObject.h" />
+    <ClInclude Include="..\..\src\include\common\vocl\VObjectFactory.h" />
+    <ClInclude Include="..\..\src\include\common\vocl\VProperty.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\constants.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\sifUtils.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\wincontact.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\wincontactsif.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WinEvent.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WineventSIF.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\winitem.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WinNote.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WinNoteSIF.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WinRecipient.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WinRecurrence.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WinRecurrenceSIF.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WinTask.h" />
+    <ClInclude Include="..\..\src\include\windows\vocl\WinTaskSIF.h" />
+    <ClInclude Include="..\..\src\include\common\spds\AccessConfig.h" />
+    <ClInclude Include="..\..\src\include\common\spds\B64Decoder.h" />
+    <ClInclude Include="..\..\src\include\common\spds\B64Encoder.h" />
+    <ClInclude Include="..\..\src\include\common\spds\BodyPart.h" />
+    <ClInclude Include="..\..\src\include\common\spds\CacheSyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\spds\Chunk.h" />
+    <ClInclude Include="..\..\src\include\common\spds\constants.h" />
+    <ClInclude Include="..\..\src\include\common\spds\CredentialHandler.h" />
+    <ClInclude Include="..\..\src\include\common\spds\DataTransformer.h" />
+    <ClInclude Include="..\..\src\include\common\spds\DataTransformerFactory.h" />
+    <ClInclude Include="..\..\src\include\common\spds\DefaultConfigFactory.h" />
+    <ClInclude Include="..\..\src\include\common\spds\DESDecoder.h" />
+    <ClInclude Include="..\..\src\include\common\spds\DESEncoder.h" />
+    <ClInclude Include="..\..\src\include\common\spds\DeviceConfig.h" />
+    <ClInclude Include="..\..\src\include\common\spds\errors.h" />
+    <ClInclude Include="..\..\src\include\common\spds\FolderExt.h" />
+    <ClInclude Include="..\..\src\include\common\spds\ItemReader.h" />
+    <ClInclude Include="..\..\src\include\common\spds\ItemReport.h" />
+    <ClInclude Include="..\..\src\include\common\spds\MappingsManager.h" />
+    <ClInclude Include="..\..\src\include\common\spds\MappingStoreBuilder.h" />
+    <ClInclude Include="..\..\src\include\common\spds\PropertyFile.h" />
+    <ClInclude Include="..\..\src\include\common\spds\spdsutils.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncItem.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncItemStatus.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncManager.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncManagerConfig.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncMap.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncMLBuilder.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncMLProcessor.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncReport.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncSourceConfig.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncSourceReport.h" />
+    <ClInclude Include="..\..\src\include\common\spds\SyncStatus.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\constants.h" />
+    <ClInclude Include="..\..\src\include\windows\spdm\DeviceManagementNode.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\DeviceManager.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\DeviceManagerFactory.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\DMTree.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\DMTreeFactory.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\DMTreeManager.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\errors.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\ManagementNode.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\ManagementObject.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\ParentManagementNode.h" />
+    <ClInclude Include="..\..\src\include\common\spdm\spdmutils.h" />
+    <ClInclude Include="..\..\src\include\windows\spdm\WinDMTreeManager.h" />
+    <ClInclude Include="..\..\src\include\common\push\CTPConfig.h" />
+    <ClInclude Include="..\..\src\include\common\push\CTPMessage.h" />
+    <ClInclude Include="..\..\src\include\common\push\CTPParam.h" />
+    <ClInclude Include="..\..\src\include\common\push\CTPService.h" />
+    <ClInclude Include="..\..\src\include\common\push\CTPThreadPool.h" />
+    <ClInclude Include="..\..\src\include\windows\push\FSocket.h" />
+    <ClInclude Include="..\..\src\include\windows\push\FThread.h" />
+    <ClInclude Include="..\..\src\include\common\push\PushListener.h" />
+    <ClInclude Include="..\..\src\include\common\mail\MailAccount.h" />
+    <ClInclude Include="..\..\src\include\common\email\MailAccount.h" />
+    <ClInclude Include="..\..\src\include\common\mail\MailData.h" />
+    <ClInclude Include="..\..\src\include\common\email\MailMessage.h" />
+    <ClInclude Include="..\..\src\include\common\email\MailSyncSourceConfig.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\BufferInputStream.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\BufferOutputStream.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\FileDataInputStream.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\FileInputStream.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\FileOutputStream.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\InputStream.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\MultipleInputStream.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\OutputStream.h" />
+    <ClInclude Include="..\..\src\include\common\ioStream\StringOutputStream.h" />
+    <ClInclude Include="..\..\src\include\common\updater\ClientUpdater.h" />
+    <ClInclude Include="..\..\src\include\common\updater\ClientUpdaterFactory.h" />
+    <ClInclude Include="..\..\src\include\common\updater\Updater.h" />
+    <ClInclude Include="..\..\src\include\common\updater\UpdaterConfig.h" />
+    <ClInclude Include="..\..\src\include\common\updater\UpdaterUI.h" />
+    <ClInclude Include="..\..\src\include\common\updater\XmlUpdater.h" />
+    <ClInclude Include="..\..\src\include\common\sapi\DownloadSapiSyncItem.h" />
+    <ClInclude Include="..\..\src\include\common\sapi\FileSapiSyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\sapi\MediaSapiSyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\sapi\UploadSapiSyncItem.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\CommandReport.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\CommandReportStore.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\DownloadMHSyncItem.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\ExportedItem.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\ExternalService.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\ExternalServiceAlbum.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\ExternalServicesAlbumStore.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\ExternalServicesStore.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHConfig.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHContentTypes.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHItemJsonParser.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHItemsStore.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHJsonParser.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHMediaJsonParser.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHMediaRequestManager.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHServiceProfiling.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHStore.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHStoreEntry.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHSyncItemInfo.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHSyncManager.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\MHSyncSource.h" />
+    <ClInclude Include="..\..\src\include\common\MediaHub\UploadMHSyncItem.h" />
+    <ClInclude Include="..\..\src\include\windows\sqlite\Database.h" />
+    <ClInclude Include="..\..\src\include\windows\sqlite\sqlite3.h" />
+    <ClInclude Include="..\..\src\include\windows\sqlite\sqlite3ext.h" />
+    <ClInclude Include="..\..\src\include\windows\pthread\pthread.h" />
+    <ClInclude Include="..\..\src\include\windows\pthread\sched.h" />
+    <ClInclude Include="..\..\src\include\windows\pthread\semaphore.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
